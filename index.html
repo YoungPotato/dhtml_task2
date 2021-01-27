@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script>
+            function changeImg() {
+                document.getElementById('pic1').src = 'http://localhost:4200/otherimg';
+            }
+            function getContent() {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', 'http://localhost:4200/content');
+                xhr.onload = xhr.onerror = function() {
+                    if (this.status == 200) {
+                        console.log(this.response);
+                    } else {
+                        console.log("error " + this.status);
+                    }
+                };
+                xhr.send();
+            }
+        </script>
+    </head>
+    <body>
+        <p><img src='https://ktonanovenkogo.ru/image/finik.jpg' alt='CSP'></p>
+        <p><img id='pic1' src='http://localhost:4200/img' alt='foto'></p>
+        <input type='button' value='change img' onclick='changeImg()'><br>
+        <input type='button' value='get content' onclick='getContent()'>
+    </body>
+</html>
